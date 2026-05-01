@@ -1,14 +1,13 @@
 package com.backend.desafio_itau.model;
 
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 public class Transacao {
-    private BigDecimal valor;
+    private double valor;
     private OffsetDateTime dataHora;
     
     // GETTERS
-    public BigDecimal getValor(){
+    public double getValor(){
         return this.valor;
     }
     public OffsetDateTime getDataHora(){
@@ -16,7 +15,7 @@ public class Transacao {
     }
 
     // SETTERS
-    public void setValor(BigDecimal valor){
+    public void setValor(double valor){
         this.valor = valor;
     }
     public void setDataHora(OffsetDateTime dataHora){
