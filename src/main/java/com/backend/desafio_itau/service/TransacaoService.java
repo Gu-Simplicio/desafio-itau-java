@@ -15,8 +15,8 @@ public class TransacaoService {
 
     public boolean criaTransacao(Transacao transacao){
         // checa se dataHora é válido   
-        OffsetDateTime now = OffsetDateTime.now();
-        if(transacao.getDataHora().isAfter(now)){
+        OffsetDateTime agora = OffsetDateTime.now();
+        if(transacao.getDataHora().isAfter(agora)){
             System.err.println("dataHora do futuro detectada");
             return false;
         }
