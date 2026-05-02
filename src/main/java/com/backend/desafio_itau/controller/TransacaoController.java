@@ -1,4 +1,4 @@
-package com.backend.desafio_itau.controllers;
+package com.backend.desafio_itau.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.desafio_itau.model.Transacao;
-import com.backend.desafio_itau.services.TransacaoService;
+import com.backend.desafio_itau.service.TransacaoService;
 
 @RestController
 @RequestMapping("/unibanco")

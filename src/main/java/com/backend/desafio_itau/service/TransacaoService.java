@@ -1,4 +1,4 @@
-package com.backend.desafio_itau.services;
+package com.backend.desafio_itau.service;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
