@@ -21,7 +21,7 @@ public class TransacaoController {
     @PostMapping("/transacao") 
     public ResponseEntity<Void> criaTransacao(@RequestBody Transacao transacao){ 
         // caso a transação enviada seja inválida
-        if(transacao.getValor() == null || transacao.getValor() < 0 || transacao.getDataHora() == null){
+        if(transacao.getValor() == null || transacao.getValor().isNaN()|| transacao.getValor().doubleValue() < 0 || transacao.getDataHora() == null){
             System.err.println("Valor inválido enviado na requisição");
             return ResponseEntity.unprocessableContent().build();
         }
