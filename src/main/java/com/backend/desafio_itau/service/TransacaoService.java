@@ -13,6 +13,7 @@ public class TransacaoService {
     // Lista de todas as transações já salvas
     private List<Transacao> transacoes = new ArrayList<Transacao>();
 
+    // POST
     public boolean criaTransacao(Transacao transacao){
         // checa se dataHora é válido   
         OffsetDateTime agora = OffsetDateTime.now();
@@ -25,6 +26,13 @@ public class TransacaoService {
         transacoes.add(transacao);
         System.out.println("Transação salva!");
         System.out.println("Tamanho atual da lista: " + transacoes.size());
+        return true;
+    }
+
+    // DELETE
+    public boolean deletaTransacoes() {
+        transacoes.clear();
+        System.out.println("Todas as transações deletadas com sucesso!");
         return true;
     }
 }
