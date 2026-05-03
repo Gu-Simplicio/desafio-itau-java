@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.backend.desafio_itau.model.Estatisticas;
 import com.backend.desafio_itau.model.Transacao;
 
 @Service
@@ -27,6 +28,24 @@ public class TransacaoService {
         System.out.println("Transação salva!");
         System.out.println("Tamanho atual da lista: " + transacoes.size());
         return true;
+    }
+
+    // GET
+    public Estatisticas recebeEstatisticas(int periodo){
+        OffsetDateTime periodoMax = OffsetDateTime.now().minusSeconds(periodo); // período onde os valores devem estar
+        List<Double> valoresTransacionados = new ArrayList<>(); // lista que terá os valores no período
+
+        // insere os valores dentro do período de 60 segundos dentro da lista
+        for(Transacao t : this.transacoes){
+            if(!t.getDataHora().isBefore(periodoMax)){
+                Double valor = t.getValor().doubleValue();
+                valoresTransacionados.add(valor);
+            }
+        } 
+
+        Estatisticas estatisticas = new Estatisticas(valoresTransacionados);
+
+        return estatisticas;
     }
 
     // DELETE
