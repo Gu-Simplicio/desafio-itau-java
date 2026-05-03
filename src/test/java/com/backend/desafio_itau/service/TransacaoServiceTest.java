@@ -4,9 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import com.backend.desafio_itau.model.Estatisticas;
 import com.backend.desafio_itau.model.Transacao;
 
 public class TransacaoServiceTest {
@@ -38,6 +41,43 @@ public class TransacaoServiceTest {
         // executa e testa
         boolean resultado = transacaoService.criaTransacao(transacao);
         assertEquals(false, resultado);
+    }
+
+    // TESTES GET
+    @Test
+    public void recebeEstatisticas_TresValidas(){
+        // transação dentro do período 
+        Transacao transacaoNoPeriodo = new Transacao();
+        transacaoNoPeriodo.setValor(10.0);
+        transacaoNoPeriodo.setDataHora(OffsetDateTime.now());
+        // transação fora do período
+        Transacao transacaoFora = new Transacao();
+        transacaoFora.setValor(10.0);
+        transacaoFora.setDataHora(OffsetDateTime.now().minusMinutes(3));
+
+        for(int i = 0; i < 3; i++){
+            transacaoService.criaTransacao(transacaoNoPeriodo);
+            transacaoService.criaTransacao(transacaoFora);
+        }
+
+        Estatisticas estatisticas = transacaoService.recebeEstatisticas(60); // recebe estatísticas dentro de 60 segs
+
+        assertEquals(3.0, estatisticas.getCount());
+        assertEquals(10.0, estatisticas.getAvg());
+        assertEquals(10.0, estatisticas.getMax());
+        assertEquals(10.0, estatisticas.getMin());
+        assertEquals(30.0, estatisticas.getSum());
+    }
+
+    @Test 
+    public void recebeEstatisticas_TudoZero(){ // deve retornar todos os valores como 0.0
+        Estatisticas estatisticas = transacaoService.recebeEstatisticas(1);
+
+        assertEquals(0.0, estatisticas.getCount());
+        assertEquals(0.0, estatisticas.getAvg());
+        assertEquals(0.0, estatisticas.getMax());
+        assertEquals(0.0, estatisticas.getMin());
+        assertEquals(0.0, estatisticas.getSum());
     }
 
     // TESTES DELETE
