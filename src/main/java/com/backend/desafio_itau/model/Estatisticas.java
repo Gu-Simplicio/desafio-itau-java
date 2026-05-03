@@ -11,16 +11,24 @@ public class Estatisticas {
     Double min;
 
     public Estatisticas(List<Double> valoresTransicionados){
-        // cria um obj de estatísticas e insere os valores (já separados pelo tempo)
-        DoubleSummaryStatistics estatisticasValores = new DoubleSummaryStatistics();
-        for(Double valor : valoresTransicionados) estatisticasValores.accept(valor);
+        if(valoresTransicionados.size() == 0){
+            this.setCount(0.0);
+            this.setSum(0.0);
+            this.setAvg(0.0);
+            this.setMax(0.0);
+            this.setMin(0.0);
+        } else {
+            // cria um obj de estatísticas e insere os valores (já separados pelo tempo)
+            DoubleSummaryStatistics estatisticasValores = new DoubleSummaryStatistics();
+            for(Double valor : valoresTransicionados) estatisticasValores.accept(valor);
 
-        // salva todas as estatísticas
-        this.setCount(Double.valueOf(estatisticasValores.getCount()));
-        this.setSum(Double.valueOf(estatisticasValores.getSum()));
-        this.setAvg(Double.valueOf(estatisticasValores.getAverage()));
-        this.setMax(Double.valueOf(estatisticasValores.getMax()));
-        this.setMin(Double.valueOf(estatisticasValores.getMin()));
+            // salva todas as estatísticas
+            this.setCount(Double.valueOf(estatisticasValores.getCount()));
+            this.setSum(Double.valueOf(estatisticasValores.getSum()));
+            this.setAvg(Double.valueOf(estatisticasValores.getAverage()));
+            this.setMax(Double.valueOf(estatisticasValores.getMax()));
+            this.setMin(Double.valueOf(estatisticasValores.getMin()));
+        }
     }
 
     // GETTERS
