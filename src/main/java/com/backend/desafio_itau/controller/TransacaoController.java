@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.desafio_itau.model.Estatisticas;
@@ -38,8 +39,8 @@ public class TransacaoController {
 
     // ENDPOINT GET
     @GetMapping("/estatistica")
-    public ResponseEntity<Estatisticas> recebeEstatisticas(){
-        Estatisticas estatisticas = transacaoService.recebeEstatisticas(60);
+    public ResponseEntity<Estatisticas> recebeEstatisticas(@RequestParam(value = "periodo", defaultValue = "60") int periodo){
+        Estatisticas estatisticas = transacaoService.recebeEstatisticas(periodo);
 
         return ResponseEntity.status(HttpStatus.OK).body(estatisticas);
     }
