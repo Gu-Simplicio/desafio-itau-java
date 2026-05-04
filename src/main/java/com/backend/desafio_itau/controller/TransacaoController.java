@@ -40,15 +40,23 @@ public class TransacaoController {
     // ENDPOINT GET
     @GetMapping("/estatistica")
     public ResponseEntity<Estatisticas> recebeEstatisticas(@RequestParam(value = "periodo", defaultValue = "60") int periodo){
-        Estatisticas estatisticas = transacaoService.recebeEstatisticas(periodo);
+        try{
+            Estatisticas estatisticas = transacaoService.recebeEstatisticas(periodo);
 
-        return ResponseEntity.status(HttpStatus.OK).body(estatisticas);
+            return ResponseEntity.status(HttpStatus.OK).body(estatisticas);
+        } catch(Exception e){ // caso ocorra algum erro inesperado
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     // ENDPOINT DELETE
     @DeleteMapping("/transacao")
     public ResponseEntity<Void> deletaTransacoes(){
-        transacaoService.deletaTransacoes();
-        return ResponseEntity.status(HttpStatus.OK).build();
+        try {
+            transacaoService.deletaTransacoes();
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } catch(Exception e){ // caso ocorra algum erro inesperado
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }
