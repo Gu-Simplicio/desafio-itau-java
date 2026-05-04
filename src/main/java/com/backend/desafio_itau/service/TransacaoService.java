@@ -15,19 +15,24 @@ public class TransacaoService {
     private List<Transacao> transacoes = new ArrayList<Transacao>();
 
     // POST
-    public boolean criaTransacao(Transacao transacao){
+    public void criaTransacao(Transacao transacao){
+        // checa se o valor é válido
+        if(transacao.getValor() == null || transacao.getValor().doubleValue() < 0){
+            System.err.println("Valor inválido enviado na requisição");
+            throw new IllegalArgumentException("valor inválido enviado!");
+        }
+
         // checa se dataHora é válido   
         OffsetDateTime agora = OffsetDateTime.now();
-        if(transacao.getDataHora().isAfter(agora)){
-            System.err.println("dataHora do futuro detectada");
-            return false;
+        if(transacao.getDataHora().isAfter(agora) || transacao.getDataHora() == null){
+            System.err.println("dataHora inválida!");
+            throw new IllegalArgumentException("dataHora inválida!");            
         }
 
         // CASO ESTEJA TUDO CERTO!
         transacoes.add(transacao);
         System.out.println("Transação salva!");
         System.out.println("Tamanho atual da lista: " + transacoes.size());
-        return true;
     }
 
     // GET

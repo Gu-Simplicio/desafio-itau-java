@@ -23,20 +23,17 @@ public class TransacaoController {
     // ENDPOINT POST
     @PostMapping("/transacao") 
     public ResponseEntity<Void> criaTransacao(@RequestBody Transacao transacao){ 
-        // caso a transação enviada seja inválida
-        if(transacao.getValor() == null || transacao.getValor().doubleValue() < 0 || transacao.getDataHora() == null){
-            System.err.println("Valor inválido enviado na requisição");
+        try{ // tenta criar uma nova transação
+            transacaoService.criaTransacao(transacao);
+            System.err.println("Tudo certo!");
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch(IllegalArgumentException e){  //Dados inválidos enviados
+            System.err.println("Dados inválidos enviados");
             return ResponseEntity.unprocessableContent().build();
-        }
-        // recebe um valor caso a transação seja bem sucedida
-        boolean transacaoCriada = transacaoService.criaTransacao(transacao);
-
-        if(!transacaoCriada) {
-            System.err.println("Erro ao salvar transação");
+        } catch(Exception e){ // caso ocorra algum erro desconhecido
+            System.err.println("Erro desconhecido!");
             return ResponseEntity.badRequest().build();
         }
-        System.err.println("Transação salva com sucesso!");
-        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     // ENDPOINT GET
