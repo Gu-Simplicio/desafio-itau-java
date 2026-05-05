@@ -1,4 +1,4 @@
-# Desafio Backend Itaú - Unibanco
+# Desafio Backend Itaú - Unibanco 1.0
 
 Este projeto é uma implementação do desafio técnico do Itaú para uma vaga de backend. A API foi desenvolvida utilizando Java e Spring Boot, focando em performance e processamento em memória, conforme solicitado nos requisitos.
 
