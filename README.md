@@ -1,4 +1,4 @@
-# Desafio Backend Itaú - Unibanco 1.0
+# Desafio Backend Itaú - Resolução 1.0
 
 Este projeto é uma implementação do desafio técnico do Itaú para uma vaga de backend. A API foi desenvolvida utilizando Java e Spring Boot, focando em performance e processamento em memória, conforme solicitado nos requisitos.
 
@@ -33,6 +33,7 @@ Todos os endpoints estão sob o prefixo `/unibanco`.
 | :--- | :--- | :--- |
 | `POST` | `/unibanco/transacao` | Recebe uma transação com `valor` e `dataHora`. |
 | `GET` | `/unibanco/estatistica` | Retorna as estatísticas das transações dos últimos 60 segundos. |
+| `GET` | `/unibanco/estatistica?periodo=` | Retorna as estatísticas das transações considerando o período em segundos enviado como parâmetro. |
 | `DELETE` | `/unibanco/transacao` | Remove todas as transações armazenadas na memória. |
 
 ### Exemplo de JSON para POST:
