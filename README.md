@@ -1,4 +1,4 @@
-# Desafio Backend Itaú - Resolução 1.0
+# Desafio Backend Itaú - Resolução 1.1
 
 Este projeto é uma implementação do desafio técnico do Itaú para uma vaga de backend. A API foi desenvolvida utilizando Java e Spring Boot, focando em performance e processamento em memória, conforme solicitado nos requisitos.
 
@@ -10,6 +10,7 @@ Este projeto é uma implementação do desafio técnico do Itaú para uma vaga d
 * [Descrição do projeto](#descrição-do-projeto)
 * [Endpoints da API](#endpoints-da-api)
 * [Como rodar o projeto](#como-rodar-o-projeto)
+* [Como rodar o projeto com Docker](#como-rodar-o-projeto-com-docker)
 
 ---
 
@@ -62,3 +63,35 @@ Todos os endpoints estão sob o prefixo `/unibanco`.
    mvn spring-boot:run
    ```
 5. A API estará disponível em `http://localhost:8080`.
+
+
+# Como rodar o projeto com Docker
+
+Este projeto também possui a opção de ser executado em contâiners, garantindo isolamento e facilidade de execução sem a necessidade de configurar o Java ou Maven localmente. A aplicação ficará disponível na porta 8080.
+
+### Via Docker Compose (Recomendado):
+
+O método mais rápido para subir a aplicação é através do Docker Compose, para isso você precisa:
+
+1. Possuir Docker e Docker Compose instalados em sua máquina;
+2. Na raíz do projeto, executo o comando abaixo para construir a imagem e iniciar o contâiner em segundo plano:
+```bash
+docker compose up 
+```
+
+Assim que estes passos forem executados, a API estará pronta para receber requisições em https://localhost:8080
+
+
+### Via Docker CLI
+
+Caso prefira gerenciar o contâiner manualmente utilizando apenas o Docker CLI, os passos serão:
+
+1. Possuir Docker instalado em sua máquina;
+2. Na raíz do projeto, executo o comando abaixo para construir a imagem da aplicação:
+```bash
+docker build -t desafio-itau-backend .
+```
+3. Inicie o contâiner mapeando a porta necessária:
+```bash
+docker run -d -p 8080:8080 --name api-itau desafio-itau-backend	
+```
