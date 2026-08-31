@@ -1,16 +1,18 @@
-const API_URL = "http://localhost:8080/unibanco";
-
 async function enviarDados(dados) {
+    const URL_POST = "http://localhost:8080/unibanco/transacao";
+    
     try {
-        const response = await fetch(`${API_URL}/transacao`, {
+        const response = await fetch(URL_POST, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(dados)
         });
-        
-        if(!response.ok) {
+
+        const result = await response.json();
+
+        if(!response.ok || !result.sucesso) {
             throw new Error("HTTP error status: ", response.status);
         }
 
@@ -30,7 +32,9 @@ async function criaTransacao(e) {
     const valorTransacao = Number(inValorTransacao.value).toFixed(2);
     const dataHoraTransacao = new Date(inDataHoraTransacao.value).toISOString();
 
-    if(isNaN(valorTransacao) || valorTransacao == undefined || dataHoraTransacao == undefined || valorTransacao == null || dataHoraTransacao == null)  {
+    const agora = new Date().toISOString();
+
+    if(isNaN(valorTransacao) || valorTransacao == undefined || dataHoraTransacao == undefined || valorTransacao == null || dataHoraTransacao == null || dataHoraTransacao > agora)  {
         alert("Valor inválido inserido!");
         return;
     }
@@ -42,6 +46,8 @@ async function criaTransacao(e) {
 
     if(enviarDados(dados)) {
         alert("Tudo certo!");
+    } else {
+        alert("Erro ao salvar transação")
     }
 }
 

@@ -36,9 +36,11 @@
                     <input type="radio" name="radTransacao" id="radTodas" checked="true"> <label for="radTodas"> Todas as transações</label>
                     <input type="radio" name="radTransacao" id="radPeriodo"> <label for="radPeriodo"> Em um período</label>
                 </div>
-                <div class="oculto">
+                <div id="campoPeriodo"  class="oculto">
                     <label for="">Período em segundos (padrão 60seg): </label>
-                    <input type="text">
+                    <input id="inPeriodo" type="number">
+
+                    <button id="btnPeriodo"> Pesquisar </button>
                 </div>
             </div>
 
