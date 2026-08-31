@@ -8,13 +8,56 @@
 </head>
 <body>
     <main>
-        
+        <section id="secaoCriaTransacao">
+            <h1> Crie sua transação </h1>
+            <form action="">
+                <div>
+                    <label for=""> Valor da transação: </label>
+                    <input type="number" step="0.01" name="valorTransacao" id="inValorTransacao" required>
+                </div>
+
+                <div>
+                    <label for=""> Data/hora da transação </label>
+                    <input type="datetime-local" name="dataHoraTransacao" id="inDataHoraTransacao" required>
+                </div>
+
+                <div id="botoesForm">
+                    <input type="button" value="Limpar transações" class="btn" id="btnDeletar">
+                    <input type="reset" value="Limpar campos" onclick="document.querySelector('#inValorTransacao').focus()" class="btn">
+                    <input type="submit" value="Salvar transação" class="btn" id="btnSalvar">
+                </div>
+            </form>
+        </section>
+
+        <section id="secaoListaTransacoes">
+            <div>
+                <div>
+                    Separar por: 
+                    <input type="radio" name="radTransacao" id="radTodas" checked="true"> <label for="radTodas"> Todas as transações</label>
+                    <input type="radio" name="radTransacao" id="radPeriodo"> <label for="radPeriodo"> Em um período</label>
+                </div>
+                <div class="oculto">
+                    <label for="">Período em segundos (padrão 60seg): </label>
+                    <input type="text">
+                </div>
+            </div>
+
+            <div>
+                <h1> Lista de <span id="tipoTabela"></span> </h1>
+
+                <table id="tabTransacoes">
+                    <thead>
+                        
+                    </thead>
+                </table>
+            </div>
+        </section>
     </main>
 
     <footer>
         &copy; Gustavo Silva Simplicio - 2026
     </footer>
 
-    <script src="assets/main.js"></script>
+    <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
