@@ -80,7 +80,7 @@ O método mais rápido para subir a aplicação é através do Docker Compose, p
 docker compose up 
 ```
 
-Assim que estes passos forem executados, a API estará pronta para receber requisições em https://localhost:8080
+Assim que estes passos forem executados, a API estará pronta para receber requisições em http://localhost:8080
 
 
 ### Via Docker CLI
