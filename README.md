@@ -34,6 +34,7 @@ Todos os endpoints estão sob o prefixo `/unibanco`.
 | :--- | :--- | :--- |
 | `POST` | `/unibanco/transacao` | Recebe uma transação com `valor` e `dataHora`. |
 | `GET` | `/unibanco/estatistica` | Retorna as estatísticas das transações dos últimos 60 segundos. |
+| `GET` | `/unibanco/transacao` | Retorna todas as transações já efetuadas |
 | `GET` | `/unibanco/estatistica?periodo=` | Retorna as estatísticas das transações considerando o período em segundos enviado como parâmetro. |
 | `DELETE` | `/unibanco/transacao` | Remove todas as transações armazenadas na memória. |
 
