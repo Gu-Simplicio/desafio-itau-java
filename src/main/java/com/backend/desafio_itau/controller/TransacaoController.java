@@ -1,5 +1,7 @@
 package com.backend.desafio_itau.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +39,7 @@ public class TransacaoController {
         }
     }
 
-    // ENDPOINT GET
+    // ENDPOINT GET - estatísticas
     @GetMapping("/estatistica")
     public ResponseEntity<Estatisticas> recebeEstatisticas(@RequestParam(value = "periodo", defaultValue = "60") int periodo){
         try{
@@ -45,6 +47,18 @@ public class TransacaoController {
 
             return ResponseEntity.status(HttpStatus.OK).body(estatisticas);
         } catch(Exception e){ // caso ocorra algum erro inesperado
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    // ENDPOINT GET - geral
+    @GetMapping("/transacao")
+    public ResponseEntity<List<Transacao>> recebeTransacoes() {
+        try {
+            List<Transacao> transacoes = transacaoService.recebeTransacoes();
+
+            return ResponseEntity.status(HttpStatus.OK).body(transacoes);
+        } catch(Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }

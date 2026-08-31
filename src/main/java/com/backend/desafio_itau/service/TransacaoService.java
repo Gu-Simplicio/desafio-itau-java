@@ -35,7 +35,7 @@ public class TransacaoService {
         System.out.println("Tamanho atual da lista: " + transacoes.size());
     }
 
-    // GET
+    // GET - estatisticas
     public Estatisticas recebeEstatisticas(int periodo){
         OffsetDateTime periodoMax = OffsetDateTime.now().minusSeconds(periodo); // período onde os valores devem estar
         List<Double> valoresTransacionados = new ArrayList<>(); // lista que terá os valores no período
@@ -51,6 +51,10 @@ public class TransacaoService {
         Estatisticas estatisticas = new Estatisticas(valoresTransacionados);
 
         return estatisticas;
+    }
+
+    public List<Transacao> recebeTransacoes(){
+        return transacoes;
     }
 
     // DELETE
