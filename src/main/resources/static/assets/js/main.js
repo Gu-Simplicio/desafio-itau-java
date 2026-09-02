@@ -1,6 +1,6 @@
 import exibeCampoPeriodo from "./exibeCampoPeriodo.js";
-import criaTransacao from "./criaTransacao.js"
-import deletaTransacoes from "./deletaTransacoes.js";
+import criaTransacao from "./services/criaTransacao.js"
+import deletaTransacoes from "./services/deletaTransacoes.js";
 
 const form = document.querySelector("form");
 const btnDeletar = document.querySelector("#btnDeletar");
