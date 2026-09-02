@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style.css">
+    <script type="module" src="assets/js/main.js" defer></script>
     <title>API de Transações</title>
 </head>
 <body>
@@ -36,7 +37,7 @@
                     <input type="radio" name="radTransacao" id="radTodas" checked="true"> <label for="radTodas"> Todas as transações</label>
                     <input type="radio" name="radTransacao" id="radPeriodo"> <label for="radPeriodo"> Em um período</label>
                 </div>
-                <div id="campoPeriodo"  class="oculto">
+                <div id="campoPeriodo" class="ocult">
                     <label for="">Período em segundos (padrão 60seg): </label>
                     <input id="inPeriodo" type="number">
 
@@ -49,8 +50,14 @@
 
                 <table id="tabTransacoes">
                     <thead>
-                        
+                        <tr>
+                            <th> Valor da Transação </th>
+                            <th> Datahora da transação </th>
+                        </tr>
                     </thead>
+                    <tbody>
+
+                    </tbody>
                 </table>
             </div>
         </section>
@@ -59,7 +66,5 @@
     <footer>
         &copy; Gustavo Silva Simplicio - 2026
     </footer>
-
-    <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
