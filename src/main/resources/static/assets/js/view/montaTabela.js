@@ -3,7 +3,7 @@ function montaTabela(transacoes) {
     
     // apaga o body atual
     const tbodyAtual = tabTransacoes.querySelector("tbody");
-    tbody.remove();
+    tbodyAtual.remove();
 
     //cria um novo
     const tbody = document.createElement("tbody");
