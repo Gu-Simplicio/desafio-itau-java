@@ -46,6 +46,7 @@ async function criaTransacao(e) {
 
     if(enviarDados(dados)) {
         alert("Tudo certo!");
+        window.location.reload();
     } else {
         alert("Erro ao salvar transação")
     }

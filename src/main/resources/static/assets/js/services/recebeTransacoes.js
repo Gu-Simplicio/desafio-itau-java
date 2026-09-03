@@ -1,8 +1,7 @@
 import montaTabela from "../view/montaTabela.js";
 
-async function recebeTransacoes(rota) {
-    console.log("Entrou no GET")
-    const URL_GET = `http://localhost:8080/unibanco/${rota}`;
+async function recebeTransacoes() {
+    const URL_GET = `http://localhost:8080/unibanco/transacao`;
 
     try {
         const response = await fetch(URL_GET);
@@ -14,6 +13,7 @@ async function recebeTransacoes(rota) {
         }
 
         const transacoes = result.dados;
+        
         montaTabela(transacoes);
     } catch(error) {
         console.error("Erro ao receber transações: ", error);
