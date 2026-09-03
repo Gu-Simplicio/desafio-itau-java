@@ -10,18 +10,22 @@ function montaTabela(transacoes) {
     tabTransacoes.appendChild(tbody);
 
     transacoes.forEach(t => {
+        // trata os valores recebidos  
+        const valorTransacao = Number(t.valor).toFixed(2);
+        const dataHoraTransacao = new Date(t.dataHora).toLocaleString();
+
         // cria a linha
         const tr = document.createElement("tr");
         tbody.appendChild(tr);
 
         // cria o elemento dos dados
         const valorTd = document.createElement("td");
-        valorTd.textContent = t.valor;
-        const datahoraTd = document.createElement("td");
-        datahoraTd.textContent = t.dataHora;
+        valorTd.textContent = `R$ ${valorTransacao}`;
+        const dataHoraTd = document.createElement("td");
+        dataHoraTd.textContent = dataHoraTransacao;
 
         tr.appendChild(valorTd);
-        tr.appendChild(datahoraTd);
+        tr.appendChild(dataHoraTd);
     });
 }
 
