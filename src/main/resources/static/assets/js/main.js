@@ -9,6 +9,7 @@ const btnEstatisticas = document.querySelector("#btnEstatisticas");
 
 form.addEventListener("submit", (event) => criaTransacao(event));
 btnDeletar.addEventListener("click", () => deletaTransacoes());
-btnEstatisticas.addEventListener("click", () => recebeEstatisticas(60));
+btnEstatisticas.addEventListener("click", () => recebeEstatisticas());
 
 recebeTransacoes();
+recebeEstatisticas();

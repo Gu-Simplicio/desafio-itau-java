@@ -1,15 +1,26 @@
-async function recebeEstatisticas(periodo){
-    const URL_GET = `http://localhost:8080/unibanco/estatistica?periodo=${periodo}`;
-    console.log("API: ", URL_GET);
+import exibeEstatisticas from "../view/exibeEstatisticas.js";
+
+function recebePeriodo() {
+    const inPeriodo = document.querySelector("#inPeriodo");
+
+    return inPeriodo.value || 60;
+}
+
+async function recebeEstatisticas(){
+    const parametro = {
+        periodo: recebePeriodo()
+    };
+
+    const URL_GET = `http://localhost:8080/unibanco/estatistica?${new URLSearchParams(parametro)}`;
+
     try {
         const response = await fetch(URL_GET);
         const result = await response.json();
 
-        console.table(result);
         if(!response.ok || !result.sucesso) {
             throw new Error("Http error status: ", response.status);
         }
-
+        console.log(result)
         const estatistica = result.dados;
 
         exibeEstatisticas(estatistica);
