@@ -52,13 +52,27 @@
             <h1>Estatísticas do Período</h1>
             
             <div id="controleEstatisticas">
-                <label for="inPeriodoEstatisticas">Período em segundos: </label>
-                <input id="inPeriodoEstatisticas" type="number" value="60">
+                <label for="inPeriodo">Período em segundos: </label>
+                <input id="inPeriodo" type="number" value="60">
                 <button id="btnEstatisticas" class="btn"> Buscar Estatísticas </button>
             </div>
 
             <ul id="listaEstatisticas">
-                
+                <li>
+                    Total: <span id="spanCount">0</span> 
+                </li>
+                <li>
+                    Máx: <span id="spanMax">0</span> 
+                </li>
+                <li>
+                    Min: <span id="spanMin">0</span> 
+                </li>
+                <li>
+                    Soma: <span id="spanSum">0</span> 
+                </li>
+                <li>
+                    Média: <span id="spanAvg">0</span> 
+                </li>
             </ul>
         </section>
     </main>
