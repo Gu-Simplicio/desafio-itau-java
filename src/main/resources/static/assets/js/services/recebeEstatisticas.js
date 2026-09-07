@@ -20,7 +20,7 @@ async function recebeEstatisticas(){
         if(!response.ok || !result.sucesso) {
             throw new Error("Http error status: ", response.status);
         }
-        console.log(result)
+        console.table(result.dados)
         const estatistica = result.dados;
 
         exibeEstatisticas(estatistica);
