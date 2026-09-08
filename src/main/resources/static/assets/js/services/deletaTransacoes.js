@@ -1,3 +1,5 @@
+import exibeModal from "../view/exibeModal.js";
+
 async function deletaTransacoes() {   
     const URL_DELETE = "http://localhost:8080/unibanco/transacao";
 
@@ -16,9 +18,9 @@ async function deletaTransacoes() {
                 throw new Error("Http error status: ", response.status);
             }
 
-            alert("Transações deletadas com sucesso!");
+            exibeModal("sucesso", "Transações deletadas com sucesso!");
         } catch(e) {
-            alert("Erro ao deletar transações");
+            exibeModal("erro", "Erro ao deletar transações");
             console.error("Erro ao deletar transações: ", e);
         }
     } 

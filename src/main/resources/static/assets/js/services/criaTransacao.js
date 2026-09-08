@@ -1,3 +1,5 @@
+import exibeModal from "../view/exibeModal.js";
+
 async function enviarDados(dados) {
     const URL_POST = "http://localhost:8080/unibanco/transacao";
     
@@ -16,9 +18,11 @@ async function enviarDados(dados) {
             throw new Error("HTTP error status: ", response.status);
         }
 
-        return true;
+        exibeModal("sucesso", "Nova transação criada com sucesso")
+        setInterval(window.location.reload(), 2000);
     } catch(error) {
         console.error("Erro ao enviar dados: ", error);
+        exibeModal("erro", "Erro ao criar nova transação!");
     }
 }
 
@@ -44,12 +48,7 @@ async function criaTransacao(e) {
         dataHora: dataHoraTransacao
     }
 
-    if(enviarDados(dados)) {
-        alert("Tudo certo!");
-        window.location.reload();
-    } else {
-        alert("Erro ao salvar transação")
-    }
+    enviarDados(dados);
 }
 
 export default criaTransacao;

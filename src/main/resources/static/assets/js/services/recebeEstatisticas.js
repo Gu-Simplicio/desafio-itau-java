@@ -1,4 +1,5 @@
 import exibeEstatisticas from "../view/exibeEstatisticas.js";
+import exibeModal from "../view/exibeModal.js";
 
 function recebePeriodo() {
     const inPeriodo = document.querySelector("#inPeriodo");
@@ -23,8 +24,10 @@ async function recebeEstatisticas(){
         console.table(result.dados)
         const estatistica = result.dados;
 
+        exibeModal("sucesso", "Estatísticas recebidas com sucesso!");
         exibeEstatisticas(estatistica);
     } catch( error ) {
+        exibeModal("erro", "Erro ao receber estatísticas")
         console.error("Erro ao receber estatísticas: ", error);
     }
 }

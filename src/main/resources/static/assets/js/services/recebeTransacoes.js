@@ -1,3 +1,4 @@
+import exibeModal from "../view/exibeModal.js";
 import montaTabela from "../view/montaTabela.js";
 
 async function recebeTransacoes() {
@@ -14,10 +15,12 @@ async function recebeTransacoes() {
 
         const transacoes = result.dados;
         
+        exibeModal("sucesso", "Transações recebidas com sucesso!");
         montaTabela(transacoes);
     } catch(error) {
+        exibeModal("erro", "Erro ao receber transações");
         console.error("Erro ao receber transações: ", error);
     }
 }
-
+ 
 export default recebeTransacoes;
