@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <script type="module" src="assets/js/main.js" defer></script>
+    <title>API de Transações</title>
+</head>
+<body>
+    <div class="modal oculto">
+        <span id="msgModal"></span>
+    </div>
+    <main>
+        <section id="secaoCriaTransacao">
+            <h1> Crie sua transação </h1>
+            <form action="">
+                <div class="campoInput">
+                    <label for=""> Valor da transação: </label>
+                    <input type="number" step="0.01" name="valorTransacao" id="inValorTransacao" required>
+                </div>
+
+                <div class="campoInput">
+                    <label for=""> Data/hora da transação </label>
+                    <input type="datetime-local" name="dataHoraTransacao" id="inDataHoraTransacao" step="1" required>
+                </div>
+
+                <div id="botoesForm">
+                    <input type="button" value="Limpar transações" class="btn" id="btnDeletar">
+                    <input type="reset" value="Limpar campos" onclick="document.querySelector('#inValorTransacao').focus()" class="btn">
+                    <input type="submit" value="Salvar transação" class="btn" id="btnSalvar">
+                </div>
+            </form>
+        </section>
+
+        <section id="secaoListaTransacoes">
+            <div>
+                <h1> Lista de transações </h1>
+
+                <table id="tabTransacoes">
+                    <thead>
+                        <tr>
+                            <th> Valor da Transação </th>
+                            <th> Datahora da transação </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="secaoEstatisticas">
+            <h1>Estatísticas do Período</h1>
+            
+            <div id="controleEstatisticas">
+                <label for="inPeriodo">Período em segundos: </label>
+                <input id="inPeriodo" type="number" value="60">
+                <button id="btnEstatisticas" class="btn"> Buscar Estatísticas </button>
+            </div>
+
+            <ul id="listaEstatisticas">
+                <li>
+                    Total: <span id="spanCount">0</span> 
+                </li>
+                <li>
+                    Máx: <span id="spanMax">0</span> 
+                </li>
+                <li>
+                    Min: <span id="spanMin">0</span> 
+                </li>
+                <li>
+                    Soma: <span id="spanSum">0</span> 
+                </li>
+                <li>
+                    Média: <span id="spanAvg">0</span> 
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        Feito por: &copy; Gustavo Silva Simplicio - 2026
+    </footer>
+</body>
+</html>

@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Create a stage for resolving and downloading dependencies.
-FROM eclipse-temurin:17-jdk-jammy as deps
+FROM eclipse-temurin:17-jdk-jammy AS deps
 
 WORKDIR /build
 
@@ -21,7 +21,7 @@ RUN --mount=type=bind,source=pom.xml,target=pom.xml \
 # jar and instead relies on an application server like Apache Tomcat, you'll need to update this
 # stage with the correct filename of your package and update the base image of the "final" stage
 # use the relevant app server, e.g., using tomcat (https://hub.docker.com/_/tomcat/) as a base image.
-FROM deps as package
+FROM deps AS package
 
 WORKDIR /build
 
@@ -34,7 +34,7 @@ RUN --mount=type=bind,source=pom.xml,target=pom.xml \
 # Create a stage for extracting the application into separate layers.
 # Take advantage of Spring Boot's layer tools and Docker's caching by extracting
 # the packaged application into separate layers that can be copied into the final stage.
-FROM package as extract
+FROM package AS extract
 
 WORKDIR /build
 
