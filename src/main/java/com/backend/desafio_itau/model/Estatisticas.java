@@ -11,7 +11,7 @@ public class Estatisticas {
     Double min;
 
     public Estatisticas(List<Double> valoresTransicionados){
-        if(valoresTransicionados.size() == 0){
+        if(valoresTransicionados == null || valoresTransicionados.size() == 0){
             this.setCount(0.0);
             this.setSum(0.0);
             this.setAvg(0.0);
