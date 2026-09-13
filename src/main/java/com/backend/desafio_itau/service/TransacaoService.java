@@ -37,6 +37,8 @@ public class TransacaoService {
 
     // GET - estatisticas
     public Estatisticas recebeEstatisticas(int periodo){
+        if(periodo < 0) throw new IllegalArgumentException("período inválido");
+
         OffsetDateTime periodoMax = OffsetDateTime.now().minusSeconds(periodo); // período onde os valores devem estar
         List<Double> valoresTransacionados = new ArrayList<>(); // lista que terá os valores no período
 

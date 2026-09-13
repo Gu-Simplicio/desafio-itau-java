@@ -63,7 +63,12 @@ public class TransacaoController {
 
             logger.info("Estatísticas no período de {} segundos retornadas com sucesso", periodo);
             return ResponseEntity.status(HttpStatus.OK).body(response);
-        } catch(Exception e){ // caso ocorra algum erro inesperado
+        } catch(IllegalArgumentException e){
+            ApiResponseDto<Estatisticas> response = new ApiResponseDto<>(false, "Dados inválidos enviados: " + e.getMessage());
+
+            logger.error("Dados inválidos enviados: ", e);
+            return ResponseEntity.unprocessableContent().body(response);
+        }catch(Exception e){ // caso ocorra algum erro inesperado
             ApiResponseDto<Estatisticas> response = new ApiResponseDto<>(false, "Erro ao calcular estatísticas: " + e.getMessage());
 
             logger.error("Erro inesperado ao buscar estatísticas: ", e);
